@@ -1,0 +1,28 @@
+<main class="container mt-4">
+  <!-- Mensaje de carga -->
+  <div *ngIf="isLoading" class="text-center">
+    <p>Cargando...</p>
+  </div>
+
+  <!-- Información detallada de la fruta -->
+  <div *ngIf="!isLoading && fruta" class="text-center">
+    <h1>{{ fruta.name }}</h1>
+    <div *ngIf="fruta.filename; else noImage">
+      <img
+        [src]="fruta.filename"
+        alt="{{ fruta.name }}"
+        class="img-fluid mb-3"
+        style="max-width: 300px"
+      />
+    </div>
+    <ng-template #noImage>
+      <p>No tiene imagen</p>
+    </ng-template>
+    <p><strong>Nombre en romano:</strong> {{ fruta.roman_name }}</p>
+    <p><strong>Tipo:</strong> {{ fruta.type }}</p>
+    <p><strong>Descripción:</strong> {{ fruta.description }}</p>
+    <a [href]="fruta.technicalFile" target="_blank" class="btn btn-info">
+      Ver archivo técnico
+    </a>
+  </div>
+</main>

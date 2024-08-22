@@ -1,0 +1,52 @@
+<main class="container mt-4">
+  <!-- Mensaje de carga -->
+  <div *ngIf="isLoading" class="text-center">
+    <p>Cargando...</p>
+  </div>
+
+  <!-- Lista de Espadas -->
+  <div *ngIf="!isLoading">
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Buscar por nombre"
+          [(ngModel)]="searchTerm"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let espada of filteredEspadas()">
+        <div class="card">
+          <div class="card-body">
+            <!-- Mostrar roman_name solo si existe -->
+            <h5 *ngIf="espada.roman_name" class="card-title">
+              {{ espada.roman_name }}
+            </h5>
+
+            <!-- Mostrar name siempre -->
+            <h6 class="card-subtitle mb-2 text-muted">{{ espada.name }}</h6>
+
+            <!-- Mostrar description solo si existe -->
+            <p *ngIf="espada.description" class="card-text">
+              Descripción: {{ espada.description }}
+            </p>
+
+            <!-- Mostrar type solo si existe -->
+            <p *ngIf="espada.type" class="card-text">Tipo: {{ espada.type }}</p>
+
+            <!-- Mostrar category solo si existe -->
+            <p *ngIf="espada.category" class="card-text">
+              Categoría: {{ espada.category }}
+            </p>
+
+            <!-- Mostrar isDestroy solo si existe -->
+            <p *ngIf="espada.isDestroy" class="card-text">Destruida: Sí</p>
+            <p *ngIf="!espada.isDestroy" class="card-text">Destruida: No</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

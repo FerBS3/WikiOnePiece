@@ -1,1 +1,56 @@
-<p>personajes works!</p>
+<main class="container mt-4">
+  <!-- Mensaje de carga -->
+  <div *ngIf="isLoading" class="text-center">
+    <p>Cargando...</p>
+  </div>
+
+  <!-- Lista de Hakis -->
+  <div *ngIf="!isLoading">
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Buscar por nombre"
+          [(ngModel)]="searchTerm"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let personaje of filteredPersonajes()">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ personaje.name }}</h5>
+            <h6 *ngIf="personaje.crew" class="card-subtitle mb-2 text-muted">
+              {{ personaje.crew.name }}
+            </h6>
+            <!-- Mostrar tamaño solo si existe -->
+            <p *ngIf="personaje.size" class="card-text">
+              Tamaño: {{ personaje.size }}
+            </p>
+            <!-- Mostrar rol solo si existe -->
+            <p *ngIf="personaje.job" class="card-text">
+              Rol: {{ personaje.job }}
+            </p>
+            <!-- Mostrar bounty solo si existe -->
+            <p *ngIf="personaje.bounty" class="card-text">
+              Bounty: {{ personaje.bounty }}
+            </p>
+            <!-- Mostrar estatus solo si existe -->
+            <p *ngIf="personaje.status" class="card-text">
+              Estatus: {{ personaje.status }}
+            </p>
+            <!-- Mostrar edad solo si existe -->
+            <p *ngIf="personaje.age" class="card-text">
+              Edad: {{ personaje.age }}
+            </p>
+            <!-- Mostrar fruta solo si existe -->
+            <p *ngIf="personaje.fruit" class="card-text">
+              Fruta: {{ personaje.fruit.name }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -25,7 +25,11 @@
               {{ fruta.roman_name }}
             </h6>
             <p class="card-text">{{ fruta.type }}</p>
-            <button type="button" class="btn btn-info">
+            <button
+              type="button"
+              class="btn btn-info"
+              (click)="viewDetails(fruta.id)"
+            >
               Información detallada
             </button>
           </div>

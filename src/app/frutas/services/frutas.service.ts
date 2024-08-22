@@ -14,4 +14,8 @@ export class FrutasService {
   public getFrutas(): Observable<IFrutas[]> {
     return this.http.get<IFrutas[]>(this.API);
   }
+
+  public getFruta(id: number): Observable<IFrutas> {
+    return this.http.get<IFrutas>(`${this.API}/${id}`);
+  }
 }

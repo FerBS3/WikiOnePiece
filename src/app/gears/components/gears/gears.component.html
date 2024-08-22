@@ -1,0 +1,30 @@
+<main class="container mt-4">
+  <!-- Mensaje de carga -->
+  <div *ngIf="isLoading" class="text-center">
+    <p>Cargando...</p>
+  </div>
+
+  <!-- Lista de Técnicas -->
+  <div *ngIf="!isLoading">
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let tecnica of vTecnicas">
+        <div class="card">
+          <div class="card-body">
+            <!-- Mostrar name siempre -->
+            <h6 class="card-subtitle mb-2 text-muted">{{ tecnica.name }}</h6>
+
+            <!-- Mostrar description solo si existe -->
+            <p *ngIf="tecnica.description" class="card-text">
+              Descripción: {{ tecnica.description }}
+            </p>
+
+            <!-- Mostrar count_technique solo si existe -->
+            <p *ngIf="tecnica.count_technique !== undefined" class="card-text">
+              Vececs usado: {{ tecnica.count_technique }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

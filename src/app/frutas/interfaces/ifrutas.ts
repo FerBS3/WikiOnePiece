@@ -1,5 +1,5 @@
 export interface IFrutas {
-  id?: number;
+  id: number;
   name: string;
   description: string;
   roman_name?: string;

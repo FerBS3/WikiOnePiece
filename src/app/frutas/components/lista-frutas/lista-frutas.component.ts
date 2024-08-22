@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IFrutas } from '../../interfaces/ifrutas';
 import { FrutasService } from '../../services/frutas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-frutas',
@@ -11,7 +12,8 @@ export class ListaFrutasComponent implements OnInit {
   vFrutas: IFrutas[] = [];
   searchTerm = '';
   isLoading = true;
-  constructor(private frutasSV: FrutasService) {}
+
+  constructor(private frutasSV: FrutasService, private router: Router) {}
 
   ngOnInit(): void {
     this.getFrutas();
@@ -21,11 +23,11 @@ export class ListaFrutasComponent implements OnInit {
     this.frutasSV.getFrutas().subscribe({
       next: (data: IFrutas[]) => {
         this.vFrutas = data;
-        this.isLoading = false; // Desactiva el estado de carga cuando los datos están listos
+        this.isLoading = false;
       },
       error: (err) => {
         console.error('Error al cargar los datos:', err);
-        this.isLoading = false; // Desactiva el estado de carga en caso de error
+        this.isLoading = false;
       },
     });
   }
@@ -34,5 +36,9 @@ export class ListaFrutasComponent implements OnInit {
     return this.vFrutas.filter((fruta) =>
       fruta.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
+  }
+
+  viewDetails(id: number): void {
+    this.router.navigate(['/frutas', id]); // Navega a la ruta con el id
   }
 }
