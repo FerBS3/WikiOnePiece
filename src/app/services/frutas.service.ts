@@ -11,7 +11,7 @@ export class FrutasService {
 
   constructor(private http: HttpClient) {}
 
-  public getFrutas(): Observable<IFrutas> {
-    return this.http.get<IFrutas>(this.API);
+  public getFrutas(): Observable<IFrutas[]> {
+    return this.http.get<IFrutas[]>(this.API);
   }
 }

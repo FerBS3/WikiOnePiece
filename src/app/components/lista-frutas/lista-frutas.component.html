@@ -1,1 +1,23 @@
-<p>lista-frutas works!</p>
+<main class="container mt-4">
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Buscar por nombre"
+        [(ngModel)]="searchTerm"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let fruta of filteredFrutas()">
+      <div class="card mb-4 text-center">
+        <div class="card-body">
+          <h5 class="card-title">{{ fruta.name }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ fruta.roman_name }}</h6>
+          <p class="card-text">{{ fruta.type }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

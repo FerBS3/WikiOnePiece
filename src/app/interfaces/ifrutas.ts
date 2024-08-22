@@ -1,9 +1,9 @@
 export interface IFrutas {
-  id?: string;
+  id?: number;
   name: string;
-  roman_name: string;
-  type: string;
   description: string;
+  roman_name?: string;
+  type: string;
   filename: string;
   technicalFile: string;
 }
