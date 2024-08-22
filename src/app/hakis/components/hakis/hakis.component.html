@@ -1,0 +1,21 @@
+<main class="container mt-4">
+  <!-- Mensaje de carga -->
+  <div *ngIf="isLoading" class="text-center">
+    <p>Cargando...</p>
+  </div>
+
+  <!-- Lista de Hakis -->
+  <div *ngIf="!isLoading">
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let haki of vHakis">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ haki.name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ haki.roman_name }}</h6>
+            <p class="card-text">{{ haki.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

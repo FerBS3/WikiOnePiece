@@ -1,7 +1,7 @@
-import { IFrutas } from './../interfaces/ifrutas';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IFrutas } from '../interfaces/ifrutas';
 
 @Injectable({
   providedIn: 'root',

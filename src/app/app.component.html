@@ -1,9 +1,18 @@
 <header class="container mt-4">
-  <div class="d-flex justify-content-between align-items-center">
+  <section class="d-flex justify-content-between align-items-center">
     <h1 class="mb-0">One Piece Fruits</h1>
     <button (click)="toggleDarkMode()" class="btn btn-primary">
       {{ isDarkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro" }}
     </button>
-  </div>
+  </section>
+  <section class="d-flex justify-content-between align-items-center">
+    <button [routerLink]="'/frutas'" type="button" class="btn btn-primary">
+      Frutas
+    </button>
+    <button type="button" class="btn btn-primary">Personajes</button>
+    <button [routerLink]="'/hakis'" type="button" class="btn btn-primary">
+      Hakis
+    </button>
+  </section>
   <router-outlet></router-outlet>
 </header>
