@@ -1,4 +1,9 @@
-<header class="container text-center">
-  <h1>One Piece Fruits</h1>
+<header class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1 class="mb-0">One Piece Fruits</h1>
+    <button (click)="toggleDarkMode()" class="btn btn-primary">
+      {{ isDarkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro" }}
+    </button>
+  </div>
   <router-outlet></router-outlet>
 </header>

@@ -10,7 +10,7 @@ import { FrutasService } from '../../services/frutas.service';
 export class ListaFrutasComponent implements OnInit {
   vFrutas: IFrutas[] = [];
   searchTerm = '';
-
+  isLoading = true;
   constructor(private frutasSV: FrutasService) {}
 
   ngOnInit(): void {
@@ -18,11 +18,18 @@ export class ListaFrutasComponent implements OnInit {
   }
 
   getFrutas(): void {
-    this.frutasSV.getFrutas().subscribe((data) => {
-      this.vFrutas = data;
-      console.log(this.vFrutas);
+    this.frutasSV.getFrutas().subscribe({
+      next: (data: IFrutas[]) => {
+        this.vFrutas = data;
+        this.isLoading = false; // Desactiva el estado de carga cuando los datos están listos
+      },
+      error: (err) => {
+        console.error('Error al cargar los datos:', err);
+        this.isLoading = false; // Desactiva el estado de carga en caso de error
+      },
     });
   }
+
   filteredFrutas(): IFrutas[] {
     return this.vFrutas.filter((fruta) =>
       fruta.name.toLowerCase().includes(this.searchTerm.toLowerCase())
